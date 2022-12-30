@@ -24,6 +24,7 @@ color = 0
 let max_volume = 200
 input.calibrateCompass()
 let degree = input.compassHeading()
+let degree_2 = degree
 for (let x = 0; x <= 4; x++) {
     for (let y = 0; y <= 4; y++) {
         led.plot(x, y)
@@ -120,7 +121,11 @@ control.inBackground(function () {
             range.showRainbow(1, 360)
             range.show()
         }
-        basic.pause(100)
+        if (program == 0 || program == 1) {
+            basic.pause(100)
+        } else {
+            basic.pause(200)
+        }
         strip.clear()
     }
 })
