@@ -32,4 +32,6 @@ A kép frissítése eltarthat néhány percig.
 
 ## Saját megjegyzés
 
-* Hogy látványosabb legyen a **max_volume** váltózónak, ami a maximális, hangerő 200-as értéket adtam meg, de valójában 255 lehet a maximum.
+* Az **A** gombbal lehet váltani a programok között: egyszínű vagy szivárvány.
+* A **B** gombbal lehet váltani a színek között, ha az egyszínű program van kiválasztva.
+* Hogy látványosabb legyen a **max_volume** váltózónak, ami a maximális, hangerő **200**-as értéket adtam meg, de valójában **255** lehet a maximum.
