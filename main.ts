@@ -1,7 +1,6 @@
 input.onButtonPressed(Button.A, function () {
-    if (program == 0) {
-        program = 1
-    } else {
+    program += 1
+    if (program > 3) {
         program = 0
     }
 })
