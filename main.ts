@@ -1,6 +1,6 @@
 input.onButtonPressed(Button.A, function () {
     program += 1
-    if (program > 3) {
+    if (program > 4) {
         program = 0
     }
 })
@@ -13,6 +13,8 @@ input.onButtonPressed(Button.B, function () {
         }
     }
 })
+let range2: neopixel.Strip = null
+let max = 0
 let range: neopixel.Strip = null
 let mic = 0
 let color = 0
@@ -133,5 +135,21 @@ control.inBackground(function () {
             basic.pause(200)
         }
         strip.clear()
+        if (program == 4) {
+            strip.clear()
+            strip.show()
+            max = 24
+            while (max >= 0) {
+                range2 = strip.range(0, max)
+                for (let index3 = 0; index3 <= max; index3++) {
+                    range2.setPixelColor(index3, neopixel.colors(NeoPixelColors.Red))
+                    range2.setPixelColor(index3, neopixel.hsl(1, 1, 0.5))
+                    range2.show()
+                }
+                range2.setPixelColor(max, neopixel.hsl(1, 1, 0.5))
+                max = max - 1
+                basic.pause(1000)
+            }
+        }
     }
 })
