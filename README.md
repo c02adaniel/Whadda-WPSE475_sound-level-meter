@@ -30,8 +30,3 @@ A kép frissítése eltarthat néhány percig.
 * for PXT/microbit
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 
-## Saját megjegyzés
-
-* Az **A** gombbal lehet váltani a programok között: egyszínű vagy szivárvány.
-* A **B** gombbal lehet váltani a színek között, ha az egyszínű program van kiválasztva.
-* Hogy látványosabb legyen a **max_volume** váltózónak, ami a maximális, hangerő **200**-as értéket adtam meg, de valójában **255** lehet a maximum.
