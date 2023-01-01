@@ -1,5 +1,6 @@
 {
     "name": "Whadda - WPSE475 - sound level meter",
+    "version": "0.1.0",
     "description": "",
     "dependencies": {
         "core": "*",
