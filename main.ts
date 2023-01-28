@@ -3,6 +3,19 @@ input.onButtonPressed(Button.A, function () {
     if (program > 4) {
         program = 0
     }
+    basic.showNumber(program)
+})
+input.onGesture(Gesture.ScreenDown, function () {
+    program = 0
+    color = 0
+    basic.showNumber(program)
+})
+input.onButtonPressed(Button.AB, function () {
+    if (wait < 100) {
+        wait = 500
+    } else {
+        wait = wait - 100
+    }
 })
 input.onButtonPressed(Button.B, function () {
     if (program == 0 || program == 2) {
@@ -14,11 +27,13 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 let range2: neopixel.Strip = null
-let max = 0
 let range: neopixel.Strip = null
 let mic = 0
 let color = 0
 let program = 0
+let wait = 0
+wait = 500
+let max1 = 23
 let strip = neopixel.create(DigitalPin.P2, 26, NeoPixelMode.RGB)
 program = 0
 color = 0
@@ -41,10 +56,9 @@ for (let x2 = 0; x2 <= 4; x2++) {
 basic.clearScreen()
 strip.clear()
 strip.show()
+basic.showNumber(program)
 basic.forever(function () {
-    if (program == 0 || program == 1) {
-        mic = input.soundLevel()
-    }
+    mic = input.soundLevel()
     if (degree != -1 && (program == 2 || program == 3)) {
         degree = input.compassHeading()
     }
@@ -129,27 +143,86 @@ control.inBackground(function () {
             range.showRainbow(1, 360)
             range.show()
         }
-        if (program == 0 || program == 1) {
-            basic.pause(100)
-        } else {
-            basic.pause(200)
-        }
-        strip.clear()
         if (program == 4) {
-            strip.clear()
-            strip.show()
-            max = 24
-            while (max >= 0) {
-                range2 = strip.range(0, max)
-                for (let index3 = 0; index3 <= max; index3++) {
-                    range2.setPixelColor(index3, neopixel.colors(NeoPixelColors.Red))
-                    range2.setPixelColor(index3, neopixel.hsl(1, 1, 0.5))
+            while (program == 4 && max1 >= 0) {
+                range2 = strip.range(0, max1)
+                for (let index32 = 0; index32 <= max1; index32++) {
+                    if (color == 0) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Red))
+                    }
+                    if (color == 1) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Orange))
+                    }
+                    if (color == 2) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Yellow))
+                    }
+                    if (color == 3) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Green))
+                    }
+                    if (color == 4) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Blue))
+                    }
+                    if (color == 5) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Indigo))
+                    }
+                    if (color == 6) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Violet))
+                    }
+                    if (color == 7) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.Purple))
+                    }
+                    if (color == 8) {
+                        range2.setPixelColor(index32, neopixel.colors(NeoPixelColors.White))
+                    }
+                    range2.show()
+                    basic.pause(wait)
+                    range2.clear()
                     range2.show()
                 }
-                range2.setPixelColor(max, neopixel.hsl(1, 1, 0.5))
-                max = max - 1
-                basic.pause(1000)
+                if (color == 0) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Red))
+                }
+                if (color == 1) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Orange))
+                }
+                if (color == 2) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Yellow))
+                }
+                if (color == 3) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Green))
+                }
+                if (color == 4) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Blue))
+                }
+                if (color == 5) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Indigo))
+                }
+                if (color == 6) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Violet))
+                }
+                if (color == 7) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.Purple))
+                }
+                if (color == 8) {
+                    strip.setPixelColor(max1, neopixel.colors(NeoPixelColors.White))
+                }
+                max1 = max1 - 1
             }
+            if (max1 < 0) {
+                max1 = 23
+                strip.clear()
+                strip.show()
+            }
+        }
+        if (program == 0 || program == 1) {
+            basic.pause(100)
+            strip.clear()
+            strip.show()
+        }
+        if (program == 2 || program == 3) {
+            basic.pause(200)
+            strip.clear()
+            strip.show()
         }
     }
 })
